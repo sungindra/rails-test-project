@@ -33,3 +33,18 @@ Things you may want to cover:
 **bold**
 _italics_
 [some link to google](google.com)
+
+```C
+#include<stdio.h>
+void printOpinion(){
+    printf("C is still my favorite language");
+}
+```
+
+### Another Test thingy
+
+> Try to code in Ruby from other language and you'll be surprised by Ruby magics
+
+- item
+- other item
+- another item
