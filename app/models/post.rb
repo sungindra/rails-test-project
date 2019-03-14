@@ -1,13 +1,16 @@
 # == Schema Information
 #
-# Table name: test_blogs
+# Table name: posts
 #
 #  id         :bigint(8)        not null, primary key
 #  title      :string
-#  body       :text
+#  content    :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  slug       :string
 #
 
-class TestBlog < ApplicationRecord
+class Post < ApplicationRecord
+  extend FriendlyId
+  friendly_id :title, use: :slugged
 end
