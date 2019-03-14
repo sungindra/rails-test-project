@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_14_043450) do
+ActiveRecord::Schema.define(version: 2019_03_14_092830) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,15 @@ ActiveRecord::Schema.define(version: 2019_03_14_043450) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "slug"
+    t.integer "status", default: 0
     t.index ["slug"], name: "index_posts_on_slug", unique: true
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "test_blogs", force: :cascade do |t|
@@ -40,6 +48,15 @@ ActiveRecord::Schema.define(version: 2019_03_14_043450) do
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "test_owner_id"
+    t.index ["test_owner_id"], name: "index_test_blogs_on_test_owner_id"
   end
 
+  create_table "test_owners", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "test_blogs", "test_owners"
 end

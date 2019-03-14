@@ -1,5 +1,7 @@
 <h1>Test Blogs</h1>
 
+<p><%= "There are no posts created yet" unless @posts.count>0 %></p>
+
 <%= link_to "Create New Post", new_post_path %>
 
 <% @posts.each do |post| %>
