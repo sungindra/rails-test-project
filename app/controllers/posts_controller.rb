@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :lookup, only: [:show, :edit, :update, :destroy]
+  before_action :lookup, only: [:show, :edit, :update, :destroy, :toggle_status]
 
   def index
     @posts = Post.all
@@ -36,6 +36,15 @@ class PostsController < ApplicationController
   def destroy
     @post.destroy
     redirect_to posts_path, notice: "Post deleted"
+  end
+
+  def toggle_status
+    if @post.draft?
+      @post.published!
+    elsif  @post.published?
+      @post.draft!
+    end
+    redirect_to posts_path, notice: "#{@post.title} status has changed to #{@post.status}"
   end
 
   private
