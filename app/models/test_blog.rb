@@ -16,4 +16,10 @@ class TestBlog < ApplicationRecord
   def self.test_scope_title(title)
     where(title: title)
   end
+
+  def set_defaults
+    self.test_owner_id ||= TestOwner.first.id
+  end
+
+  after_initialize :set_defaults
 end
