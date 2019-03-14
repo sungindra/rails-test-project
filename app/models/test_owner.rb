@@ -9,5 +9,6 @@
 #
 
 class TestOwner < ApplicationRecord
-  has_many :test_blog
+  has_many :test_blogs
+  accepts_nested_attributes_for :test_blogs, reject_if: lambda { |x| x['title'].blank? || x['body'].blank? }
 end
