@@ -1,0 +1,4 @@
+<% @test_blogs.each do |test_blog| %>
+  <h3><%= link_to "#{test_blog.title}", test_blog %></h3>
+  <p><%= test_blog.body %></p>
+<% end %>

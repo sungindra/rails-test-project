@@ -12,4 +12,8 @@
 
 class TestBlog < ApplicationRecord
   belongs_to :test_owner
+
+  def self.test_scope_title(title)
+    where(title: title)
+  end
 end
