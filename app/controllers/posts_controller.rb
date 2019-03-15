@@ -51,9 +51,6 @@ class PostsController < ApplicationController
     redirect_to posts_path, notice: "#{@post.title} status has changed to #{@post.status}"
   end
 
-  def page
-  end
-
   private
     def post_params
       params.require(:post).permit(:title, :content)
