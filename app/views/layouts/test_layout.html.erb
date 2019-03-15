@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NewProj | <%= @page_title || "MyPage" %></title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <meta name="keywords" content="<%= @seo_keywords || "" %>" />
+
+    <%= stylesheet_link_tag    'test_blogs', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= link_to "Go out of Hell\'s realm", root_path %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+    <% if current_user.is_a? User %>
+      <%= link_to "Return to Hell", destroy_user_session_path, method: :delete %>
+    <% else %>
+      <%= link_to "Return to Purgratory", new_user_session_path %>
+      <%= link_to "Become a devotee", new_user_registration_path %>
+    <% end %>
+    <%= yield %>
+    <p><%= "I suppose you visited me from" + session[:source] if session[:source] %></p>
+  </body>
+</html>

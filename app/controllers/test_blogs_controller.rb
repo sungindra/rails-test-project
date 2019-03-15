@@ -1,5 +1,6 @@
 class TestBlogsController < ApplicationController
   before_action :set_test_blog, only: [:show, :edit, :update, :destroy]
+  layout "test_layout"
 
   # GET /test_blogs
   # GET /test_blogs.json
