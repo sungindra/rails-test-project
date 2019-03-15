@@ -1,5 +1,5 @@
 module CurrentUserConcern
-  extend ActiveSupport::CurrentUserConcern
+  extend ActiveSupport::Concern
   # require 'ostruct'
 
   def current_user

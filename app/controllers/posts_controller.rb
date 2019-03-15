@@ -3,16 +3,20 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    @page_title = "Posts"
   end
 
   def show
+    @page_title = @post.title
   end
 
   def new
     @post = Post.new
+    @page_title = "New Post"
   end
 
   def edit
+    @page_title = "Edit Post"
   end
 
   def create
