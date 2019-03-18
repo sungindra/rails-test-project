@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_18_032032) do
+ActiveRecord::Schema.define(version: 2019_03_18_110618) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,12 @@ ActiveRecord::Schema.define(version: 2019_03_18_032032) do
     t.index ["slug", "sluggable_type", "scope"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type_and_scope", unique: true
     t.index ["slug", "sluggable_type"], name: "index_friendly_id_slugs_on_slug_and_sluggable_type"
     t.index ["sluggable_type", "sluggable_id"], name: "index_friendly_id_slugs_on_sluggable_type_and_sluggable_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string "filename"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "posts", force: :cascade do |t|
@@ -50,7 +56,9 @@ ActiveRecord::Schema.define(version: 2019_03_18_032032) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "test_owner_id"
+    t.bigint "user_id"
     t.index ["test_owner_id"], name: "index_test_blogs_on_test_owner_id"
+    t.index ["user_id"], name: "index_test_blogs_on_user_id"
   end
 
   create_table "test_owners", force: :cascade do |t|
@@ -73,4 +81,5 @@ ActiveRecord::Schema.define(version: 2019_03_18_032032) do
   end
 
   add_foreign_key "test_blogs", "test_owners"
+  add_foreign_key "test_blogs", "users"
 end

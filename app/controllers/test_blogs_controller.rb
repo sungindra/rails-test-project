@@ -25,6 +25,8 @@ class TestBlogsController < ApplicationController
   # POST /test_blogs
   # POST /test_blogs.json
   def create
+    ## alternative way to create relationship
+    # @test_blog = current_user.test_blogs.new(test_blog_params)
     @test_blog = TestBlog.new(test_blog_params)
 
     respond_to do |format|
@@ -74,6 +76,6 @@ class TestBlogsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def test_blog_params
-      params.require(:test_blog).permit(:title, :body)
+      params.require(:test_blog).permit(:title, :body).merge(user: current_user)
     end
 end

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
       get :toggle_status
     end
   end
+  resources :images
   resources :test_blogs
   get "page", to: "pages#page"
   get "monas", to: "pages#monas"

@@ -1,0 +1,8 @@
+<div class="mt-5">
+  <%= form_for(@image) do |f| %>
+    <%= f.label :image %>
+    <%= f.file_field :filename %>
+
+    <%= f.submit :submit %>
+  <% end %>
+</div>
