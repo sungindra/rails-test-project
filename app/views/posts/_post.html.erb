@@ -1,0 +1,11 @@
+<div class="container card m-2 p-0 border-0" data-id="<%= post.id %>">
+  <div class="bg-secondary px-3 py-2 rounded-lg">
+    <div class="column">
+      <h3><%= link_to "#{post.title}", post, class: ["text-decoration-none", "text-reset"] %></h3>
+      <p><%= post.content %></p>
+      <%= link_to post.status, toggle_status_post_path(post), class: ["btn", "btn-light"]%>
+      <%= link_to 'Edit', edit_post_path(post.id), class: ["btn", "btn-light"] %>
+      <%= link_to 'Delete', post, method: :delete, data: { confirm: "Are you sure?" }, class: ["btn", "btn-danger"] %>
+    </div>
+  </div>
+</div>

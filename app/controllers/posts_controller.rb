@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :lookup, only: [:show, :edit, :update, :destroy, :toggle_status]
 
   def index
-    @posts = Post.all
+    @posts = Post.by_position
     @page_title = "Posts"
   end
 
@@ -49,6 +49,13 @@ class PostsController < ApplicationController
       @post.draft!
     end
     redirect_to posts_path, notice: "#{@post.title} status has changed to #{@post.status}"
+  end
+
+  def sort
+    params[:order].each do |key, value|
+      Post.find(value[:id]).update(position: value[:position])
+    end
+    render nothing: :true
   end
 
   private

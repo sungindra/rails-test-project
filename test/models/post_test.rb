@@ -9,6 +9,7 @@
 #  updated_at :datetime         not null
 #  slug       :string
 #  status     :integer          default("draft")
+#  position   :integer
 #
 
 require 'test_helper'
