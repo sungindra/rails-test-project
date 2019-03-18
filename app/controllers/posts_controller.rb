@@ -51,6 +51,13 @@ class PostsController < ApplicationController
     redirect_to posts_path, notice: "#{@post.title} status has changed to #{@post.status}"
   end
 
+  def sort
+    params[:order].each do |key, value|
+      Post.find(value[:id]).update(position: value[:position])
+    end
+    render nothing: :true
+  end
+
   private
     def post_params
       params.require(:post).permit(:title, :content)

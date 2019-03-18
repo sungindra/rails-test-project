@@ -26,6 +26,10 @@ ready = ->
       type: 'PUT'
       url: '/posts/sort'
       data: order: updated_order
+      headers: {
+        'X-Transaction': 'POST Example',
+        'X-CSRF-Token': $('meta[name="csrf-token"]').attr('content')
+      }
     return
   return
 
