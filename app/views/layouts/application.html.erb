@@ -14,9 +14,9 @@
 
   <body class="mx-4 my-4">
     <%= link_to "Home", root_path %>
+    <%= auth_bar_helper %>
     <p class="notice"><%= notice %></p>
     <p class="alert"><%= alert %></p>
-    <%= auth_bar_helper %>
     <%= yield %>
     <p><%= "I suppose you visited me from" + session[:source] if session[:source] %></p>
   </body>
