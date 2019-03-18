@@ -9,6 +9,7 @@
 #  updated_at :datetime         not null
 #  slug       :string
 #  status     :integer          default("draft")
+#  position   :integer
 #
 
 class Post < ApplicationRecord
@@ -17,4 +18,8 @@ class Post < ApplicationRecord
   friendly_id :title, use: :slugged
 
   validates_presence_of :title, :content
+
+  def self.by_position
+    order("position ASC")
+  end
 end

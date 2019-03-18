@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   before_action :lookup, only: [:show, :edit, :update, :destroy, :toggle_status]
 
   def index
-    @posts = Post.all
+    @posts = Post.by_position
     @page_title = "Posts"
   end
 
